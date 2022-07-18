@@ -32,7 +32,7 @@ As aulas da #ImersãoJava foram separadas da seguinte maneira:
 - [Aula 01](/github/ydirickson/tree/Aula01) (18/07/2022): Criado um projeto simples de Java (sem Build Tools) pelo VSCode e foi consumida a primeira API do IMDB durante a aula. Os desafios implementados foram: 
     - Consumir outros endpoints como _filmes mais populares_, _melhores séries_ e _sérias mais populares_;
     - Usar emojis, cores e formatação nos prints do console;
-    - Colocar a chave de API do IMDB em outro lugar, seja variável de ambiente ou arquivo properties;
+    - Colocar a chave de API do IMDB em outro lugar, seja variável de ambiente ou arquivo properties (:ballot_box_with_check:);
     - Mudar o JsonParser para alguma biblioteca JSON como Jackson ou GSON (:ballot_box_with_check:);
     - *Desafio Supremo* criar uma maneira de o usuário dar uma avaliação ao filme, puxando algum arquivo de configuração OU pedindo a avaliação para o usuário digitar no terminal.
 
