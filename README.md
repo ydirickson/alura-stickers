@@ -15,6 +15,7 @@ Repositório com códigos da #ImersãoJava da Alura
  * [Índice](#índice)
  * [Sobre](#sobre)
  * [Aulas](#aulas)
+ * [Dependências](#dependências)
  * [Tecnologias Utilizadas](#tecnologias-utilizadas)
  * [Autores](#autores)
  * [Licença](#licença)
@@ -33,6 +34,14 @@ As aulas da #ImersãoJava foram separadas da seguinte maneira:
     - Colocar a chave de API do IMDB em outro lugar, seja variável de ambiente ou arquivo properties;
     - Mudar o JsonParser para alguma biblioteca JSON como Jackson ou GSON (:ballot_box_with_check:);
     - *Desafio Supremo* criar uma maneira de o usuário dar uma avaliação ao filme, puxando algum arquivo de configuração OU pedindo a avaliação para o usuário digitar no terminal.
+
+## Dependências
+
+O projeto atual utiliza as seguintes dependências (presentes na pasta /bin):
+
+ - `jackson-annotations-2.13.3.jar`
+ - `jackson-core-2.13.3.jar`
+ - `jackson-databind-2.13.3.jar`
 
 ##  Tecnologias Utilizadas
 
