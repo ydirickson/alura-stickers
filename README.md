@@ -31,7 +31,7 @@ As aulas da #ImersãoJava foram separadas da seguinte maneira:
     - Consumir outros endpoints como _filmes mais populares_, _melhores séries_ e _sérias mais populares_;
     - Usar emojis, cores e formatação nos prints do console;
     - Colocar a chave de API do IMDB em outro lugar, seja variável de ambiente ou arquivo properties;
-    - Mudar o JsonParser para alguma biblioteca JSON como Jackson ou GSON;
+    - Mudar o JsonParser para alguma biblioteca JSON como Jackson ou GSON (:ballot_box_with_check:);
     - *Desafio Supremo* criar uma maneira de o usuário dar uma avaliação ao filme, puxando algum arquivo de configuração OU pedindo a avaliação para o usuário digitar no terminal.
 
 ##  Tecnologias Utilizadas
