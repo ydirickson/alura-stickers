@@ -6,14 +6,16 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class App {
 
     public static void main(String[] args) throws Exception {
         // Primeiro fazer uma conexão HTTP para buscar os 250 melhores filmes do IMDB
-        String url = "https://imdb-api.com/en/API/Top250Movies/k_6go9wu44";
+        String apiKey = System.getenv("IMDB_API_KEY");
+        if(apiKey == null || "".equals(apiKey.trim())){
+            throw new IllegalArgumentException("Não foi encontrada a variável de ambiente 'IMDB_API_KEY', verifique!");
+        }
+
+        String url = "https://imdb-api.com/en/API/Top250Movies/"+apiKey;
         URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco)

@@ -17,6 +17,7 @@ Repositório com códigos da #ImersãoJava da Alura
  * [Aulas](#aulas)
  * [Dependências](#dependências)
  * [Tecnologias Utilizadas](#tecnologias-utilizadas)
+ * [Como Executar](#como-executar)
  * [Autores](#autores)
  * [Licença](#licença)
 
@@ -47,6 +48,20 @@ O projeto atual utiliza as seguintes dependências (presentes na pasta /bin):
 
 - ``Java 17``
 - ``VSCode``
+
+## Como Executar
+
+Recomenda-se abrir o projeto dentro do VSCode (ou outra IDE) para usar o executor de projetos Java. Ao se executar pela primeira vez na sessão do usuário, é necessário exportar a chave de API do IMDB.
+
+No Linux/Unix/Mac:
+```
+export IMDB_API_KEY=<SUA_CHAVE_API>
+```
+
+No Windows:
+```
+setx IMDB_API_KEY="<SUA_CHAVE_API>"
+```
 
 ## Autores
 
