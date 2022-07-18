@@ -1,18 +1,44 @@
-## Getting Started
+<h1 id="titulo" style="text-align: center">YDIRICKSON - Alura Sticker</h1>
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Repositório com códigos da #ImersãoJava da Alura
 
-## Folder Structure
+<div id="badges">
+    <img src="https://img.shields.io/github/license/ydirickson/alura-stickers?style=for-the-badge" alt="Insígnea de Licença GPL" />
+    <img src="https://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=YELLOW&style=for-the-badge"
+    alt="Insígnea de Status em Desenvolvimento" />
+</div>
 
-The workspace contains two folders by default, where:
+## Índice
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+ * [Título e Capa](#titulo)
+ * [Badges](#badges)
+ * [Índice](#índice)
+ * [Sobre](#sobre)
+ * [Aulas](#aulas)
+ * [Tecnologias Utilizadas](#tecnologias-utilizadas)
+ * [Autores](#autores)
+ * [Licença](#licença)
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Sobre
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Esse repositório conteŕa os meus códigos da #ImersãoJava da Alura, feita de 18/07/2022 até 22/07/2022. O conteúdo visto em cada aula estará descrito em [Aulas](#aulas) e estará separado em branches específicas, com uma branch com a finalização do código.
 
-## Dependency Management
+## Aulas
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+As aulas da #ImersãoJava foram separadas da seguinte maneira:
+
+- [Aula 01](/github/ydirickson/tree/Aula01) (18/07/2022): Criado um projeto simples de Java (sem Build Tools) pelo VSCode e foi consumida a primeira API do IMDB durante a aula. Os desafios implementados foram: 
+
+##  Tecnologias Utilizadas
+
+- ``Java 17``
+- ``VSCode``
+
+## Autores
+
+| [<img src="https://avatars.githubusercontent.com/u/4514095?v=4" width=115><br><sub>Yuri Dirickson</sub>](https://github.com/ydirickson) |
+| :---: |
+
+## Licença
+
+Esse projeto está licenciado sobre a [GPL 3.0](./LICENSE)
