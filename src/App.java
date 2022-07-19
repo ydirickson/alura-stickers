@@ -45,8 +45,6 @@ public class App {
                     int count = 1;
                     for (Map<String,String> filme : listaDeFilmes) {
                         printer.imprimirDados(filme);
-                        printer.quebraLinha();
-
                         count++;
                         if(count > limit){
                             break;
