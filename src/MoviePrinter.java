@@ -37,13 +37,16 @@ public class MoviePrinter {
     }
 
     public void imprimirDados(Map<String, String> filme) {
-        double classificacao = Double.parseDouble(filme.get("imDbRating"));
-        String classString = String.join("", Collections.nCopies(((int) classificacao), "⭐"));
         
         print.println("\u001b[1m Título: \u001b[m\u001b[37;1m\u001b[44;1m "+filme.get("title")+" \u001b[m");
         print.println("\u001b[1m Poster: \u001b[m\u001b[37;1m\u001b[42;1m "+filme.get("image")+" \u001b[m");
-        print.print("\u001b[1m Classificação: \u001b[m\u001b[37;1m\u001b[46;1m " + classificacao + " \u001b[m ");
-        print.println(classString);
+        this.imprimirClassificacao(filme.get("imDbRating"));
+    }
+
+    public void imprimirClassificacao(String classificacao) {
+        double classDouble = Double.parseDouble(classificacao);
+        String classString = String.join("", Collections.nCopies(((int) classDouble), "⭐"));
+        print.print("\u001b[1m Classificação: \u001b[m\u001b[37;1m\u001b[46;1m " + classString + " (" + classificacao + ") \u001b[m");
         print.println();
     }
 

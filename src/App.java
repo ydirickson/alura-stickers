@@ -45,6 +45,10 @@ public class App {
                     int count = 1;
                     for (Map<String,String> filme : listaDeFilmes) {
                         printer.imprimirDados(filme);
+                        printer.imprimirNaLinha("Digite a sua classificação: ");
+                        String classificacao = scanner.next();
+                        printer.imprimirClassificacao(classificacao);
+                        printer.quebraLinha();
                         count++;
                         if(count > limit){
                             break;

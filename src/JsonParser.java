@@ -29,8 +29,7 @@ public class JsonParser {
                 }
             }
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("Erro ao processar o JSON "+e.toString());
         }
         return retorno;
     }
