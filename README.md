@@ -35,7 +35,17 @@ As aulas da #ImersãoJava foram separadas da seguinte maneira:
     - Colocar a chave de API do IMDB em outro lugar, seja variável de ambiente ou arquivo properties (:ballot_box_with_check:);
     - Mudar o JsonParser para alguma biblioteca JSON como Jackson ou GSON (:ballot_box_with_check:);
     - *Desafio Supremo* criar uma maneira de o usuário dar uma avaliação ao filme, puxando algum arquivo de configuração OU pedindo a avaliação para o usuário digitar no terminal (:ballot_box_with_check:).
-
+- [Aula 02](/github/ydirickson/tree/Aula02) (19/07/2022): Criada a classe responsável pela geração dos Stickers do Whatsapp/Telegram, utilizando a API de manipulação de imagens do Java. Os desafios implementados foram:
+    - Ler a documentação da classe abstrata InputStream.
+    - Centralizar o texto na figurinha.
+    - Fazer um pacote no Whatsapp e/ou Telegram com as suas próprias figurinhas!
+    - Criar diretório de saída das imagens, se ainda não existir.
+    - Colocar outra fonte como a Comic Sans ou a Impact, a fonte usada em memes.
+    - Colocar uma imagem de você que está fazendo esse curso sorrindo, fazendo joinha!
+    - Colocar contorno (outline) no texto da imagem.
+    - Tratar as imagens retornadas pela API do IMDB para pegar uma imagem maior ao invés dos thumbnails. Opções: pegar a URL da imagem e remover o trecho mostrado durante a aula ou consumir o endpoint de posters da API do IMDB (mais trabalhoso), tratando o JSON retornado.
+    - Fazer com que o texto da figurinha seja personalizado de acordo com as classificações do IMDB.
+    - _Desafio supremo:_ usar alguma biblioteca de manipulação de imagens como OpenCV pra extrair imagem principal e contorná-la.
 ## Dependências
 
 O projeto atual utiliza as seguintes dependências (presentes na pasta /bin):
