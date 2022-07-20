@@ -1,5 +1,7 @@
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -30,6 +32,7 @@ public class App {
 
         // Inicializando o Parser e o Scanner e iterando nos endpoints
         var parser = new JsonParser();
+        var geradora = new GeradorStickers();
         try(Scanner scanner = new Scanner(System.in);){
 
             for(String[] endpoint : ENPOINTS){
@@ -44,11 +47,18 @@ public class App {
                     printer.quebraLinha();
                     int count = 1;
                     for (Map<String,String> filme : listaDeFilmes) {
+                        InputStream is = new URL(filme.get("image")).openStream();
+                        String nomeArquivo = filme.get("title")+".png";
+
                         printer.imprimirDados(filme);
                         printer.imprimirNaLinha("Digite a sua classificação: ");
                         String classificacao = scanner.next();
                         printer.imprimirClassificacao(classificacao);
                         printer.quebraLinha();
+                        
+                        printer.imprimirNaLinha("Gerando a figurinha do filme!");
+                        geradora.criar(is, nomeArquivo);
+
                         count++;
                         if(count > limit){
                             break;
