@@ -14,9 +14,14 @@ public class JsonParser {
     private static final Pattern REGEX_ITEMS = Pattern.compile(".*\\[(.+)\\].*");
     private static final Pattern REGEX_ATRIBUTOS_JSON = Pattern.compile("\"(.+?)\":\"(.*?)\"");
     
-    public List<Map<String, String>> parseJackson(String json){
+    public List<Map<String, String>> parseJackson(String json) {
+        return this.parseJackson(json, Integer.MAX_VALUE);
+    }
+
+    public List<Map<String, String>> parseJackson(String json, Integer limite){
         ObjectMapper mapper = new ObjectMapper();
         List<Map<String, String>> retorno = new ArrayList<>();
+        int count = 1;
         try {
             JsonNode raiz = mapper.readTree(json);
 
@@ -26,6 +31,9 @@ public class JsonParser {
                     Map<String, String> dados = new HashMap<>();
                     no.fieldNames().forEachRemaining(name -> dados.put(name, no.get(name).asText()));
                     retorno.add(dados);
+                    if(++count > limite) {
+                        break;
+                    }
                 }
             }
         } catch (JsonProcessingException e) {

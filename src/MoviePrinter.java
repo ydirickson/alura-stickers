@@ -1,53 +1,147 @@
 import java.io.PrintStream;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Scanner;
 
 public class MoviePrinter {
 
-    private static final String FECHAR_UNICODE = "\u001b[m";
-    private static final String VERMELHO_BRANCO_UNICODE = "\u001b[1m\u001b[37m\u001b[41m";
+    private static final String FECHAR = "\u001b[m";
+
+    private static final String COR_BRANCA = "\u001b[37m";
+
+    private static final String NEGRITO = "\u001b[1m";
+
+    private static final String FUNDO_CIANO = "\u001b[46m";
+    private static final String FUNDO_VERMELHO = "\u001b[41m";
     
     private PrintStream print;
 
     private String prefixoTitulo = "+++++++";
 
-    public MoviePrinter(){
+    private Scanner scanner;
+
+    private boolean classificar;
+
+    public MoviePrinter(boolean classificar){
+        this.classificar = classificar;
         this.print = System.out;
     }
 
-    public void quebraLinha() {
-        print.println();
-    }
-
-    public void titulo(String nome) {
-        String limiteCabecalho = VERMELHO_BRANCO_UNICODE +
-            prefixoTitulo+String.join("", Collections.nCopies(nome.length(), "+"))+prefixoTitulo+
-            FECHAR_UNICODE;
-        String titulo = VERMELHO_BRANCO_UNICODE +
-                            prefixoTitulo + nome + prefixoTitulo +
-                        FECHAR_UNICODE;
-        
-        print.println(limiteCabecalho);
-        print.println(titulo);
-        print.println(limiteCabecalho);
-    }
-
-    public void imprimirNaLinha(String texto) {
-        print.print(VERMELHO_BRANCO_UNICODE+texto+FECHAR_UNICODE);
+    public void imprimirTituloApp() {
+        this.quebrarLinha();
+        this.imprimirln(" ++++++++++++++++++++++++++++++++++++++++++++++++++ ", NEGRITO, COR_BRANCA, FUNDO_CIANO);
+        this.imprimirln(" +++++++++++++++ Alura Stickers +++++++++++++++++++ ", NEGRITO, COR_BRANCA, FUNDO_CIANO);
+        this.imprimirln(" ++++++++++++++++++++++++++++++++++++++++++++++++++ ", NEGRITO, COR_BRANCA, FUNDO_CIANO);
+        this.quebrarLinha();
     }
 
     public void imprimirDados(Map<String, String> filme) {
-        
-        print.println("\u001b[1m Título: \u001b[m\u001b[37;1m\u001b[44;1m "+filme.get("title")+" \u001b[m");
-        print.println("\u001b[1m Poster: \u001b[m\u001b[37;1m\u001b[42;1m "+filme.get("image")+" \u001b[m");
+        this.imprimirTituloFilme(filme.get("title"));
         this.imprimirClassificacao(filme.get("imDbRating"));
+        if(classificar){
+            this.lerClassificacao();
+        }
+        this.imprimir("Convertendo poster em figurinha...");
     }
 
-    public void imprimirClassificacao(String classificacao) {
+    public void imprimirFigurinhaCriada(String nomeArquivo) {
+        this.print.print('\r');
+        this.print.print("Figurinha criada: "+nomeArquivo);
+        this.quebrarLinha();
+        this.quebrarLinha();
+    }
+
+    public void imprimirTituloLista(String nome) {
+        this.imprimirln("++++++++ "+nome+" +++++++", NEGRITO);
+        this.quebrarLinha();
+    }
+
+    private void imprimirTituloFilme(String nome) {
+        String limite = prefixoTitulo+String.join("", Collections.nCopies(nome.length(), "+"))+prefixoTitulo;
+        String titulo = prefixoTitulo + nome + prefixoTitulo;
+        
+        this.imprimirln(limite, NEGRITO, COR_BRANCA, FUNDO_VERMELHO);
+        this.imprimirln(titulo, NEGRITO, COR_BRANCA, FUNDO_VERMELHO);
+        this.imprimirln(limite, NEGRITO, COR_BRANCA, FUNDO_VERMELHO);
+    }
+
+    private void imprimirClassificacao(String classificacao) {
+        String classString = this.calcularClassificacao(classificacao);
+        this.imprimir("Classificação: ", NEGRITO);
+        this.imprimir(classString, null, null, FUNDO_CIANO);
+        this.quebrarLinha();
+    }
+
+    private void lerClassificacao() {
+        this.imprimir("Sua Classificação: ", NEGRITO);
+        String classificacao = scanner.nextLine();
+        //this.print.print('\r');
+        String classString = this.calcularClassificacao(classificacao);
+        this.imprimir("Sua Classificação: ", NEGRITO);
+        this.imprimir(classString, null, null, FUNDO_CIANO);
+        this.quebrarLinha();
+    }
+
+    private String calcularClassificacao(String classificacao){
         double classDouble = Double.parseDouble(classificacao);
-        String classString = String.join("", Collections.nCopies(((int) classDouble), "⭐"));
-        print.print("\u001b[1m Classificação: \u001b[m\u001b[37;1m\u001b[46;1m " + classString + " (" + classificacao + ") \u001b[m");
-        print.println();
+        return String.join("", Collections.nCopies(((int) classDouble), "⭐"))+ "("+classificacao+")";
+    }
+
+    private void imprimir(String texto){
+        this.imprimir(texto, null, null, null);
+    }
+
+    private void imprimir(String texto, String estilo){
+        this.imprimir(texto, estilo, null, null);
+    }
+
+    private void imprimir(String texto, String estilo, String corFonte, String corFundo) {
+        String unicode = this.juntarUnicode(estilo, corFonte, corFundo);
+        String fechar = unicode.length() > 0 ? FECHAR : "";
+        System.out.print(
+            unicode +
+            texto +
+            fechar
+        );
+    }
+
+    private void imprimirln(String texto){
+        this.imprimirln(texto, null, null, null);
+    }
+
+    private void imprimirln(String texto, String estilo){
+        this.imprimirln(texto, estilo, null, null);
+    }
+
+    private void imprimirln(String texto, String estilo, String corFonte){
+        this.imprimirln(texto, estilo, corFonte, null);
+    }
+
+    private void imprimirln(String texto, String estilo, String corFonte, String corFundo) {
+        this.imprimir(texto, estilo, corFonte, corFundo);
+        this.quebrarLinha();
+    }
+
+    private void quebrarLinha() {
+        this.print.println();
+    }
+
+    private String juntarUnicode(String estilo, String corFonte, String corFundo) {
+        String unicodes = "";
+        if(estilo != null){
+            unicodes += estilo;
+        }
+        if(corFonte != null){
+            unicodes += corFonte;
+        }
+        if(corFundo != null){
+            unicodes += corFundo;
+        }
+        return unicodes;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
     }
 
 }

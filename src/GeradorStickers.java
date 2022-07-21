@@ -1,17 +1,24 @@
 import static java.awt.Transparency.TRANSLUCENT;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
-import java.awt.Font;
 
 import javax.imageio.ImageIO;
 
 public class GeradorStickers {
+
+        public void criar(String url, String nomeArquivo) throws Exception {
+            String[] partes = url.split("@\\.");
+
+            URI uri = URI.create(partes[0]+"@..jpg");
+            this.criar(uri.toURL().openStream(), nomeArquivo);
+        }
 
         public void criar(InputStream isImagem, String nomeArquivo) throws Exception{
             // Leitura de imagem
